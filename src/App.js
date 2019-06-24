@@ -1,6 +1,7 @@
 // import React, { useState } from 'react';
 import React, { Component } from 'react';
 import './App.css';
+import Radium,{StyleRoot}from 'radium';
 import Person from'./Person/Person'
 /* This is first way to use react code */
 class App extends Component{
@@ -61,11 +62,16 @@ class App extends Component{
 
   render() {
       const style = {
-          backgroundColor: 'white',
+          backgroundColor: 'green',
+          color: 'white',
           font: 'inherit',
           border: '1px solid blue',
           padding: '8px',
-          cursor: 'pointer'
+          cursor: 'pointer',
+          ':hover': {
+              backgroundColor: 'lightgreen',
+              color: 'black'
+          }
       };
 
       let persons = null;
@@ -104,24 +110,42 @@ class App extends Component{
                       My Hobbies: Racing
                   </Person>*/}
               </div>
-          )
+          );
+          style.backgroundColor= 'red';
+
+          style[':hover'] = {
+              backgroundColor: 'salmon',
+              color: 'black'
+          }
+      }
+        /*This is way to use dynamically style in the html*/
+      // let classes  = ['red', 'bold'].join(' ');
+      /*Second way to use dynamically style in the html*/
+      let classes  = [];
+      if (this.state.persons.length <= 2) {
+          classes.push('red')
+      }
+      if (this.state.persons.length <= 1) {
+          classes.push('bold')
       }
     return (
-        <div className="App">
-          <h1> Hi, I'm a React App</h1>
-            <img src="logo.svg" alt="" className='App-logo'/>
-            {/*You can bind the data in the button*/}
-          {/*<button onClick ={this.switchNameHandler.bind(this, 'Sumit')}>Switch Name</button>*/}
-         {/* <button style={style} onClick ={ () => this.switchNameHandler.bind('Sumit')}>Switch Name</button>*/}
-          <button style={style} onClick ={this.togglePersonsHandler}>Switch Name</button>
-            {persons}
-        </div>
+        <StyleRoot>
+            <div className="App">
+              <h1> Hi, I'm a React App</h1>
+              <p className={classes.join(' ')}> This is really working</p>
+                {/*You can bind the data in the button*/}
+              {/*<button onClick ={this.switchNameHandler.bind(this, 'Sumit')}>Switch Name</button>*/}
+             {/* <button style={style} onClick ={ () => this.switchNameHandler.bind('Sumit')}>Switch Name</button>*/}
+              <button style={style} onClick ={this.togglePersonsHandler}>Switch Name</button>
+                {persons}
+            </div>
+        </StyleRoot>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi, I\'m a React App'))
   }
 }
 
-export default App;
+export default Radium(App);
 /* Second Way to write the same code to another way*/
  /*const  App = props => {
     const [personsState, setPersonsState] = useState({

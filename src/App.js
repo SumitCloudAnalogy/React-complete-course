@@ -1,6 +1,6 @@
 // import React, { useState } from 'react';
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 
 import Person from'./Person/Person'
 /* This is first way to use react code */
@@ -61,6 +61,8 @@ class App extends Component{
     };
 
   render() {
+      let btnClass = null;
+/*
       const style = {
           backgroundColor: 'green',
           color: 'white',
@@ -68,7 +70,7 @@ class App extends Component{
           border: '1px solid blue',
           padding: '8px',
           cursor: 'pointer'
-      };
+      };*/
 
       let persons = null;
       // console.log("this.state.showPersons", this.state.showPersons);
@@ -107,29 +109,29 @@ class App extends Component{
                   </Person>*/}
               </div>
           );
-          style.backgroundColor= 'red';
-
+          // style.backgroundColor= 'red';
+            btnClass = classes.Red
 
       }
         /*This is way to use dynamically style in the html*/
       // let classes  = ['red', 'bold'].join(' ');
       /*Second way to use dynamically style in the html*/
-      let classes  = [];
+      let assignedClasses  = [];
       if (this.state.persons.length <= 2) {
-          classes.push('red')
+          assignedClasses.push(classes.red)
       }
       if (this.state.persons.length <= 1) {
-          classes.push('bold')
+          assignedClasses.push(classes.bold)
       }
     return (
 
-            <div className="App">
+            <div className={classes.App}>
               <h1> Hi, I'm a React App</h1>
-              <p className={classes.join(' ')}> This is really working</p>
+              <p className={assignedClasses.join(' ')}> This is really working</p>
                 {/*You can bind the data in the button*/}
               {/*<button onClick ={this.switchNameHandler.bind(this, 'Sumit')}>Switch Name</button>*/}
              {/* <button style={style} onClick ={ () => this.switchNameHandler.bind('Sumit')}>Switch Name</button>*/}
-              <button style={style} onClick ={this.togglePersonsHandler}>Switch Name</button>
+              <button className={btnClass} onClick ={this.togglePersonsHandler}>Switch Name</button>
                 {persons}
             </div>
 

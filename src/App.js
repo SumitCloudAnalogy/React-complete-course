@@ -1,7 +1,7 @@
 // import React, { useState } from 'react';
 import React, { Component } from 'react';
 import './App.css';
-import Radium,{StyleRoot}from 'radium';
+
 import Person from'./Person/Person'
 /* This is first way to use react code */
 class App extends Component{
@@ -67,11 +67,7 @@ class App extends Component{
           font: 'inherit',
           border: '1px solid blue',
           padding: '8px',
-          cursor: 'pointer',
-          ':hover': {
-              backgroundColor: 'lightgreen',
-              color: 'black'
-          }
+          cursor: 'pointer'
       };
 
       let persons = null;
@@ -113,10 +109,7 @@ class App extends Component{
           );
           style.backgroundColor= 'red';
 
-          style[':hover'] = {
-              backgroundColor: 'salmon',
-              color: 'black'
-          }
+
       }
         /*This is way to use dynamically style in the html*/
       // let classes  = ['red', 'bold'].join(' ');
@@ -129,7 +122,7 @@ class App extends Component{
           classes.push('bold')
       }
     return (
-        <StyleRoot>
+
             <div className="App">
               <h1> Hi, I'm a React App</h1>
               <p className={classes.join(' ')}> This is really working</p>
@@ -139,13 +132,13 @@ class App extends Component{
               <button style={style} onClick ={this.togglePersonsHandler}>Switch Name</button>
                 {persons}
             </div>
-        </StyleRoot>
+
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi, I\'m a React App'))
   }
 }
 
-export default Radium(App);
+export default App;
 /* Second Way to write the same code to another way*/
  /*const  App = props => {
     const [personsState, setPersonsState] = useState({

@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import classes from './App.css';
 
-import Person from'./Person/Person'
+import Person from'./Person/Person';
+import ErrorBoundary from'./ErrorBoundary/ErrorBoundary';
 /* This is first way to use react code */
 class App extends Component{
 
@@ -32,7 +33,7 @@ class App extends Component{
   nameChangeHandler = (event, id ) => {
       console.log("event Value : ", event.target.value);
       const personIndex = this.state.persons.findIndex(p => {
-          return p.id === id;
+          return p.userId === id;
       });
 
       console.log("personIndex : ", personIndex);
@@ -78,15 +79,14 @@ class App extends Component{
           persons =(
               <div>
                   {this.state.persons.map((person, index) => {
-                     return <Person
+                     return <ErrorBoundary  key={person.id}><Person
                          click={ () => this.deletePersonHandler(index)}
                           name={person.name}
                           age={person.age}
-                          key={person.id}
                           changed={(event) => this.nameChangeHandler (event, person.id)}
                       >
                           My Hobbies: Racing
-                      </Person>
+                     </Person> </ErrorBoundary>
                   })}
                  {/* <Person
                       name={this.state.persons[0].name}

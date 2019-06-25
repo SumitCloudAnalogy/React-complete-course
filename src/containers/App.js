@@ -181,7 +181,6 @@ class App extends Component{
                         showPersons={this.state.showPersons}
                         personsLength={this.state.persons.length}
                         clicked={this.togglePersonsHandler}
-
                     /> : null}
                     {persons}
                 </AuthContext.Provider>
@@ -193,58 +192,7 @@ class App extends Component{
 }
 
 export default withClass(App, classes.App);
-/* Second Way to write the same code to another way*/
- /*const  App = props => {
-    const [personsState, setPersonsState] = useState({
-         persons : [
-             {name: 'Max', age: 28},
-             {name: 'Manu', age: 29},
-             {name: 'Stephanie', age: 26},
-         ]
-     });
 
-    useState('some other value');
-    const [otherState, setOhterState] = useState('some other value');
-    console.log(personsState, otherState);
-    const switchNameHandler = () => {
-        // console.log('Was clicked!');
-        // DON"T DO THIS: this.state.persons[0].name = 'Sumit';
-        setPersonsState({
-            persons: [
-                {name: 'Sumit', age: 28},
-                {name: 'Manu', age: 29},
-                {name: 'Stephanie', age: 26},
-            ]
-        })
-
-    };
-    return (
-        <div className="App">
-          <h1> Hi, I'm a React App</h1>
-          <button onClick={switchNameHandler}>Switch Name</button>
-          <Person
-              name={personsState.persons[0].name}
-              age={personsState.persons[0].age}>
-              My Hobbies: Racing
-          </Person>
-          <Person
-              name={personsState.persons[1].name}
-              age={personsState.persons[1].age}
-          >
-              My Hobbies: Racing
-          </Person>
-          <Person
-              name={personsState.persons[2].name}
-              age={personsState.persons[2].age}>
-              My Hobbies: Racing
-          </Person>
-        </div>
-    );
-    // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi, I\'m a React App'))
-};
-export default App;
-
-*/
 
 
 

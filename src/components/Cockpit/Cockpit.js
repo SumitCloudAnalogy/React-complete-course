@@ -44,7 +44,7 @@ const Cockpit = (props) => {
             <p className={assignedClasses.join(' ')}> This is really working</p>
             <button ref={toggleBtnRef} className={btnClass} onClick ={props.clicked}>Switch Name</button>
 
-            <button onClick={authContext.login}>Log in </button>}
+            <button onClick={authContext.login}>Log in </button>
 
         </div>
     )
